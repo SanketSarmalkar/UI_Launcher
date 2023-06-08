@@ -17,15 +17,18 @@ class _BottomNavigationBarDeviceAppState
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
-    return Container(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(width * 0.035),
-        child: Image.memory(
-          (widget.application as ApplicationWithIcon?)!.icon,
-          width: width * 0.16,
-          height: width * 0.16,
-        ),
-      ),
+
+    final icon = (widget.application as ApplicationWithIcon?)?.icon;
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(width * 0.035),
+      child: icon != null
+          ? Image.memory(
+              icon,
+              width: width * 0.16,
+              height: width * 0.16,
+            )
+          : const SizedBox(), // Replace with your desired fallback widget
     );
   }
 }

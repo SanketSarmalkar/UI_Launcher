@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
         systemNavigationBarColor: Colors.blueGrey.shade900,
       ));
     }
+    deviceAppController.fetchInstalledApps();
   }
 
   @override
@@ -42,7 +43,8 @@ class _HomePageState extends State<HomePage> {
         bottomBarColor: Colors.transparent,
         width: MediaQuery.of(context).size.width * 0.9,
         borderRadius: BorderRadius.circular(500),
-        child: const BottomNavigation(),
+        child:
+            BottomNavigation(installedApps: deviceAppController.InstalledApp),
         body: (context, controller) => const HomeBody(),
       ),
     );
