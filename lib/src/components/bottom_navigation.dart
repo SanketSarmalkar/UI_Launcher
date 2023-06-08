@@ -1,4 +1,7 @@
+import 'package:android_launcher/src/components/bottom_navigation_bar_device_app.dart';
+import 'package:android_launcher/src/services/device_apps_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -8,6 +11,7 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
+  DeviceAppController deviceAppController = Get.put(DeviceAppController());
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -29,8 +33,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
       //width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(width * 0.08),
-        border: Border.all(color: Colors.grey[300]!, width: width * 0.005),
-        color: Colors.white,
+        //border: Border.all(color: Colors.grey[300]!, width: width * 0.005),
+        color: Colors.transparent,
       ),
       child: Row(
         children: [
@@ -39,40 +43,34 @@ class _BottomNavigationState extends State<BottomNavigation> {
             child: MaterialButton(
                 shape: const CircleBorder(),
                 onPressed: () {},
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.abc),
-                    Text(
-                      'Home',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: width * 0.025,
-                        //fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
+                // child: Column(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     Icon(Icons.abc),
+                //     Text(
+                //       'Home',
+                //       style: TextStyle(
+                //         color: Colors.black,
+                //         fontSize: width * 0.025,
+                //         //fontWeight: FontWeight.bold,
+                //       ),
+                //     )
+                //   ],
+                // ),
+                child: BottomNavigationBarDeviceApp(
+                  application: deviceAppController.InstalledApp.firstWhere(
+                      (element) => element.appName == "YouTube"),
                 )),
           ),
           Expanded(
             flex: 1,
             child: MaterialButton(
-                shape: const CircleBorder(),
-                onPressed: () {},
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.abc),
-                    Text(
-                      'My Contests',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: width * 0.023,
-                        //fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
-                )),
+              shape: const CircleBorder(),
+              onPressed: () {},
+              child: BottomNavigationBarDeviceApp(
+                  application: deviceAppController.InstalledApp.firstWhere(
+                      (element) => element.appName == "Phone")),
+            ),
           ),
           Expanded(
             flex: 1,
@@ -82,19 +80,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   // Navigator.of(context).push(
                   //     MaterialPageRoute(builder: (_) => const RewardPage()));
                 },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.abc),
-                    Text(
-                      'Reward',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: width * 0.025,
-                        //fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
+                child: BottomNavigationBarDeviceApp(
+                  application: deviceAppController.InstalledApp.firstWhere(
+                      (element) => element.appName == "Camera"),
                 )),
           ),
           Expanded(
@@ -105,19 +93,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   // Navigator.of(context).push(
                   //     MaterialPageRoute(builder: (_) => const WalletPage()));
                 },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.abc),
-                    Text(
-                      'Wallet',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: width * 0.025,
-                        //fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
+                child: BottomNavigationBarDeviceApp(
+                  application: deviceAppController.InstalledApp.firstWhere(
+                      (element) => element.appName == "Chrome"),
                 )),
           ),
         ],
