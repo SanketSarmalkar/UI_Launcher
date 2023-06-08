@@ -1,5 +1,6 @@
 import 'package:android_launcher/src/components/bottom_navigation_bar_device_app.dart';
 import 'package:android_launcher/src/services/device_apps_controller.dart';
+import 'package:device_apps/device_apps.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -42,7 +43,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
             flex: 1,
             child: MaterialButton(
                 shape: const CircleBorder(),
-                onPressed: () {},
+                onPressed: () {
+                  DeviceApps.openApp(
+                      deviceAppController.InstalledApp.firstWhere(
+                              (element) => element.appName == "YouTube")
+                          .packageName);
+                },
                 // child: Column(
                 //   mainAxisAlignment: MainAxisAlignment.center,
                 //   children: [
@@ -66,7 +72,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
             flex: 1,
             child: MaterialButton(
               shape: const CircleBorder(),
-              onPressed: () {},
+              onPressed: () {
+                DeviceApps.openApp(deviceAppController.InstalledApp.firstWhere(
+                    (element) => element.appName == "Phone").packageName);
+              },
               child: BottomNavigationBarDeviceApp(
                   application: deviceAppController.InstalledApp.firstWhere(
                       (element) => element.appName == "Phone")),
@@ -79,6 +88,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 onPressed: () {
                   // Navigator.of(context).push(
                   //     MaterialPageRoute(builder: (_) => const RewardPage()));
+                  DeviceApps.openApp(
+                      deviceAppController.InstalledApp.firstWhere(
+                              (element) => element.appName == "Messages")
+                          .packageName);
                 },
                 child: BottomNavigationBarDeviceApp(
                   application: deviceAppController.InstalledApp.firstWhere(
@@ -92,6 +105,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 onPressed: () {
                   // Navigator.of(context).push(
                   //     MaterialPageRoute(builder: (_) => const WalletPage()));
+                  DeviceApps.openApp(
+                      deviceAppController.InstalledApp.firstWhere(
+                              (element) => element.appName == "Chrome")
+                          .packageName);
                 },
                 child: BottomNavigationBarDeviceApp(
                   application: deviceAppController.InstalledApp.firstWhere(
