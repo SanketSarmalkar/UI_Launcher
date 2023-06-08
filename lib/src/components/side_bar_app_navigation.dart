@@ -52,9 +52,19 @@ class _SideBarAppNavigationState extends State<SideBarAppNavigation> {
                               top: height * 0.01,
                               bottom: height * 0.01,
                               left: width * 0.04),
-                          child: DeviceAppComponent(
-                              application:
-                                  deviceAppController.InstalledApp[index]),
+                          child: GestureDetector(
+                            onTap: () {
+                              DeviceApps.openApp(deviceAppController
+                                  .InstalledApp[index].packageName);
+                            },
+                            onLongPress: () {
+                              DeviceApps.openAppSettings(deviceAppController
+                                  .InstalledApp[index].packageName);
+                            },
+                            child: DeviceAppComponent(
+                                application:
+                                    deviceAppController.InstalledApp[index]),
+                          ),
                         );
                       }),
                 ],
