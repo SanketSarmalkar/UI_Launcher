@@ -17,7 +17,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   DeviceAppController deviceAppController = Get.put(DeviceAppController());
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
+    //final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context)
         .size
         .width; // * MediaQuery.of(context).devicePixelRatio;
@@ -137,6 +137,5 @@ class _BottomNavigationState extends State<BottomNavigation> {
       ),
       //),
     );
-    ;
   }
 }

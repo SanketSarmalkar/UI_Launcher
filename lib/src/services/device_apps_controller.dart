@@ -2,6 +2,7 @@ import 'package:device_apps/device_apps.dart';
 import 'package:get/get.dart';
 
 class DeviceAppController extends GetxController {
+  // ignore: non_constant_identifier_names
   RxList<Application> InstalledApp = RxList<Application>();
   // Future<List<Application>> fetchApps() async {
   //   List<Application> apps = await DeviceApps.getInstalledApplications(

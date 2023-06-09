@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:android_launcher/src/components/device_app_component.dart';
 import 'package:android_launcher/src/services/device_apps_controller.dart';
 import 'package:device_apps/device_apps.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
